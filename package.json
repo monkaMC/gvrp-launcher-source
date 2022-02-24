@@ -1,0 +1,56 @@
+{
+  "name": "gvrp-launcher",
+  "productName": "GVRP-Launcher",
+  "version": "1.0.1",
+  "description": "GVRP LAUNCHER",
+  "main": "src/index.js",
+  "author": {
+    "name": "reversum",
+    "email": "73497566+reversum@users.noreply.github.com"
+  },
+  "license": "MIT",
+  "config": {
+    "forge": {
+      "packagerConfig": {},
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "gvrp_launcher"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
+        }
+      ]
+    }
+  },
+  "dependencies": {
+    "angular-popper": "^2.0.1",
+    "bootstrap": "^3.4.1",
+    "child_process": "^1.0.2",
+    "electron-squirrel-startup": "^1.0.0",
+    "electron-store": "^8.0.1",
+    "electron-updater": "^4.6.5",
+    "install": "^0.13.0",
+    "jquery": "^3.6.0",
+    "node-cmd": "^5.0.0",
+    "popper.js": "^1.16.1",
+    "ps-node": "^0.1.6",
+    "random-string-detection": "0.0.2",
+    "request": "^2.88.2",
+    "screenshot-desktop": "^1.12.7",
+    "update-electron-app": "^2.0.1"
+  }
+}

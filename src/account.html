@@ -1,0 +1,131 @@
+<html lang="en"><head>
+        <meta charset="UTF-8">
+        <title>GVRP-Launcher | Einstellungen</title>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script>window.$ = window.jQuery = require('./js/jquery.min.js');</script>
+
+
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="d-flex justify-content-center align-items-center mt-3" stlye="margin-top: 2vh;">
+                <img src="img/Logo.png" style="width: 24px; height: 24px;"><h4>GVRP-Launcher > Account</h4></img>
+            </div>
+              <h3 style="margin-top: 5vh; margin-bottom: 3vh;" >Informationen</h3>
+              <br>
+              <span style="color:white; font-size: 2.5vh;">Warns: 0</span>
+              <br>
+              <span style="color:white; font-size: 2.5vh;">Shield Status: Nicht gewhitelisted.</span>
+              <br>
+                <button class="btn btn-danger" style="margin-top: 5vh;" id="exitBtn">Schließen</button>
+            <br>
+        </div>
+    
+</body>
+<style>
+
+    button {
+      -webkit-app-region: no-drag;
+    }
+    #settingsForm {
+      margin-top: 5vh;
+      -webkit-app-region: no-drag;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #181818;
+      margin: auto;
+      max-width: 38rem;
+      padding: 2rem;
+    
+    }
+    
+    label {
+      color: white;
+    }
+    
+    img {
+      display: absolute;
+      float: center;
+      -webkit-app-region: no-drag;
+    
+    }
+        
+    h3 {
+    
+    display: inline-block;
+    margin-left: 2vh;
+    text-align: center;
+    float: center;
+    color: white;
+    font-weight: 200;
+    -webkit-app-region: no-drag;
+  
+  }
+  
+    h4 {
+    
+      display: inline-block;
+      margin-left: 2vh;
+      text-align: center;
+      float: center;
+      color: white;
+      font-weight: 800;
+      -webkit-app-region: no-drag;
+    
+    }
+    
+    .login_info {
+            font-size: 3vh;
+            opacity: 0.8;
+            text-shadow: 0px 0px 4px #80573c;
+            color: #ccc; 
+        }
+    
+    </style>
+    <script type="text/javascript">
+        const electron = require('electron');
+        const ipcRenderer = electron.ipcRenderer;
+        const Store = require('electron-store');
+      const store = new Store();
+      $(document).ready(function() {
+      
+      
+        var us = store.get('username');
+        var alt_path = store.get('alt_path');
+        document.getElementById("username").value = us;
+        document.getElementById("alt_path").value = alt_path;
+
+      
+      
+      
+      
+        $("#exitBtn").click(function (event) {
+          event.preventDefault();
+          ipcRenderer.send('hideAccounts');
+
+      
+               });//end ready function
+            $("#saveBtn").click(function (event) {
+              event.preventDefault();
+              store.set("username", document.getElementById("username").value);
+
+              let path = document.getElementById("alt_path").value
+
+              let finishpath = path.replace(String.fromCharCode(220), "/");
+
+
+              store.set("alt_path", finishpath);
+              document.getElementById("alt_path").value = finishpath;
+
+  
+                                                          
+      
+                       });//end click function
+               });//end ready function
+      </script>
+      
+      
+    </html>
